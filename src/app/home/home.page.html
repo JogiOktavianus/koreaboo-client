@@ -1,20 +1,39 @@
 <ion-header>
   <ion-toolbar>
     <img src="assets/icon/favicon.png">
+    <ion-searchbar showCancelButton cancelButtonText="Custom Cancel"></ion-searchbar>
+    <ion-item>
+      <ion-button>Login</ion-button>
+      <ion-button>Sign Up</ion-button>
+    </ion-item>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding center text-center>
   <ion-list>
     <ion-item>
-      <ion-input placeholder="Username" [(ngModel)]="username"></ion-input>
+      <ion-button expand="block">K - POP</ion-button>
+      <ion-button expand="block">K - Drama</ion-button>
+      <ion-button expand="block">K - Movie</ion-button>
+      <ion-button expand="block">K - POP</ion-button>
     </ion-item>
   </ion-list>
   <ion-list>
-    <ion-item>
-      <ion-input placeholder="Password" type="password" [(ngModel)]="password"></ion-input>
-    </ion-item>
+      <ion-item>
+          <ion-slides pager="true" [options]="slideOpts">
+              <ion-slide>
+                <img src="assets\images\1.jpg">
+              </ion-slide>
+              <ion-slide>
+                  <img src="assets\images\2.jpg">
+              </ion-slide>
+              <ion-slide>
+                  <img src="assets\images\3.jpg">
+              </ion-slide>
+              <ion-slide>
+                  <img src="assets\images\4.jpg">
+              </ion-slide>
+            </ion-slides>
+      </ion-item>
   </ion-list>
-  <ion-button expand="block" (click)="login()">Log In</ion-button>
-  <ion-button expand="block" color="light" (click)="register">Register</ion-button>
 </ion-content>
