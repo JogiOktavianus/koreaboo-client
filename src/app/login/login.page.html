@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <img src="assets/icon/favicon.png">
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding center text-center>
+  <ion-list>
+    <ion-item>
+      <ion-input placeholder="Username" [(ngModel)]="username"></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item>
+      <ion-input placeholder="Password" type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-button expand="block" (click)="login()">Log In</ion-button>
+  <ion-button expand="block" color="light" (click)="register">Register</ion-button>
+</ion-content>
