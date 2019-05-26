@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start" (click)="goHomeKmovie()">
+      <ion-button>
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>K-Movie</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark" padding>
+
+  <h1><b>{{ kmovie.title }}</b></h1>
+
+  <img src="https://koreaboo-server.herokuapp.com/images/{{ kmovie.poster }}">
+  <h2><b>Profile</b></h2>
+  <ul>
+    <li>
+      <b>Movie: </b>{{ kmovie.movie }}</li>
+    <li>
+      <b>Revised Romanization: </b>{{ kmovie.revised }}</li>
+    <li>
+      <b>Hangul: </b>{{ kmovie.hangul }}</li>
+    <li>
+      <b>Director: </b>{{ kmovie.director }}</li>
+    <li>
+      <b>Writer: </b>{{ kmovie.writer }}</li>
+    <li>
+      <b>Producer: </b>{{ kmovie.producer }}</li>
+    <li>
+      <b>Cinematographer: </b>{{ kmovie.cinematographer }}</li>
+    <li>
+      <b>Release Date: </b>{{ kmovie.releaseDate | date }}</li>
+    <li>
+      <b>Runtime: </b>{{ kmovie.runtime }}</li>
+    <li>
+      <b>Genre: </b>{{ kmovie.genre }}</li>
+    <li>
+      <b>Distributor:</b> {{ kmovie.distributor }}</li>
+
+  </ul>
+
+  <h2><b>Synopsis by KOREABOO</b></h2>
+  <div class="ion-text-left">
+    <p>
+      {{ kmovie.synopsis }}
+    </p>
+  </div>
+
+
+  <h2><b>Cast</b></h2>
+  <ul>
+    <p *ngFor="let cast of kmovie.cast">{{ cast }}</p>
+  </ul>
+  <ion-list></ion-list>
+
+  <h4>Comments</h4>
+  <ion-textarea *ngIf="user" [(ngModel)]="message" type="text" placeholder="Leave a Comment... "></ion-textarea>
+  <ion-button *ngIf="user" color="light" float-right round (click)="sendComment()">Send</ion-button>
+  <br><br>
+  <div class="comment-box">
+    <ion-card *ngFor="let comment of comments">
+      <ion-card-content>
+        <strong>{{comment.message}}</strong>
+        <p>{{ comment.name }}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start" (click)="goHomeVshow()">
+      <ion-button>
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>K-Variety Show</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark" padding>
+
+  <h1><b>{{ kvarietyshow.title }}</b></h1>
+
+  <img src="https://koreaboo-server.herokuapp.com/images/{{ kvarietyshow.poster }}">
+  <h2><b>Profile</b></h2>
+  <ul>
+    <li>
+      <b>As Known As: </b>{{ kvarietyshow.aka }}</li>
+    <li>
+      <b>Air Time:</b> {{ kvarietyshow.airTime }}</li>
+    <li>
+      <b>Director: </b>{{ kvarietyshow.director }}</li>
+    <li>
+      <b>Broadcast Network: </b>{{ kvarietyshow.broadcastNetwork }}</li>
+    <li>
+      <b>Released: </b> {{ kvarietyshow.released }}</li>
+  </ul>
+
+  <h2><b>Synopsis by KOREABOO</b></h2>
+  <div class="ion-text-left">
+    <p>
+      {{ kvarietyshow.synopsis }}
+    </p>
+  </div>
+
+
+  <h2><b>Cast</b></h2>
+  <ul>
+    <p *ngFor="let cast of kvarietyshow.cast">{{ cast }}</p>
+  </ul>
+  <ion-list></ion-list>
+
+  <h4>Comments</h4>
+  <ion-textarea *ngIf="user" [(ngModel)]="message" type="text" placeholder="Leave a Comment... "></ion-textarea>
+  <ion-button *ngIf="user" color="light" float-right round (click)="sendComment()">Send</ion-button>
+  <br><br>
+  <div class="comment-box">
+    <ion-card *ngFor="let comment of comments">
+      <ion-card-content>
+        <strong>{{comment.message}}</strong>
+        <p>{{ comment.name }}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

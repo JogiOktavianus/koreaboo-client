@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start" (click)="goHomePop()">
+      <ion-button>
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>K-Pop</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark" padding>
+  <h1><b>{{ kpop.name }}</b></h1>
+  <img src="https://koreaboo-server.herokuapp.com/images/{{ kpop.image }}">
+  <h2><b>Introduction to {{ kpop.name }}</b></h2>
+  <div class="ion-text-left">
+    <p>
+      {{ kpop.bio }}
+    </p>
+  </div>
+  <ul>
+    <li><b>Agency: </b>{{ kpop.agency }}</li>
+    <li><b>Debut: </b>{{ kpop.debut | date }}</li>
+    <li><b>Years Active: </b>{{ kpop.yearsActive }}</li>
+    <li><b>Most Popular Member: </b>{{ kpop.mostPopularMember }}</li>
+    <li><b>Fandom: </b>{{ kpop.fandom }}</li>
+  </ul>
+  <h2><b>Members</b></h2>
+  <div class="ion-text-left">
+    <div *ngFor="let m of kpop.member">
+      <h4><b>{{ m.name }}</b></h4>
+      <img src="https://koreaboo-server.herokuapp.com/images/{{ m.picture }}">
+      <p>{{ m.bio }}</p>
+      <ul>
+        <li><b>Height: </b>{{ m.height }}</li>
+        <li><b>Date of Birth: </b>{{ m.dateBirth }}</li>
+        <li><b>Blood Type: </b>{{ m.bloodType }}</li>
+        <li><b>Position: </b>{{ m.position }}</li>
+      </ul>
+    </div>
+  </div>
+  <ion-list></ion-list>
+
+  <h4>Comments</h4>
+  <ion-textarea *ngIf="user" [(ngModel)]="message" type="text" placeholder="Leave a Comment... "></ion-textarea>
+  <ion-button *ngIf="user" color="light" float-right round (click)="sendComment()">Send</ion-button>
+  <br><br>
+  <div class="comment-box">
+    <ion-card *ngFor="let comment of comments">
+      <ion-card-content>
+        <strong>{{comment.message}}</strong>
+        <p>{{ comment.name }}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

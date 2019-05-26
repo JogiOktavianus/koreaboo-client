@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      K-Movie
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card color="light" *ngFor="let dt of kmovie" (click)="goKmovie(dt.id)">
+    <ion-card-header>
+      <ion-card-subtitle>Korean Movie</ion-card-subtitle>
+      <ion-card-title>{{ dt.title }}</ion-card-title>
+      <img src="https://koreaboo-server.herokuapp.com/images/{{ dt.poster }}">
+    </ion-card-header>
+    <ion-card-content>
+      <div class="ion-text-left">
+        {{ dt.synopsisShort }}
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

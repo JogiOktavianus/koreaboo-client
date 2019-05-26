@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      K-Pop
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark">
+
+  <ion-card color="light" *ngFor="let data of kpop">
+    <div (click)="goKpop(data.id)">
+      <ion-card-header>
+        <ion-card-subtitle>Korean Music</ion-card-subtitle>
+        <ion-card-title>{{ data.name }}</ion-card-title>
+        <img src="https://koreaboo-server.herokuapp.com/images/{{ data.image }}">
+      </ion-card-header>
+      <ion-card-content>
+        <div class="ion-text-left">
+          {{ data.shortBio }}
+        </div>
+      </ion-card-content>
+    </div>
+  </ion-card>
+
+</ion-content>

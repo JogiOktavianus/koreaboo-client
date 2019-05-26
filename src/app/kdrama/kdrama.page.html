@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start" (click)="goHome()">
+      <ion-button>
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>K-Drama</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark" padding>
+
+  <h1><b>{{ kdrama.title }}</b></h1>
+  <img src="https://koreaboo-server.herokuapp.com/images/{{ kdrama.poster }}">
+  <h2><b>Profile</b></h2>
+  <ul>
+    <li>
+      <b>Drama: </b>{{ kdrama.title }}</li>
+    <li>
+      <b>Revised Romanization: </b>{{ kdrama.revised }}</li>
+    <li>
+      <b>Hangul: </b>{{ kdrama.hangul }}</li>
+    <li>
+      <b>Director: </b>{{ kdrama.director }}</li>
+    <li>
+      <b>Writer: </b>{{ kdrama.writer }}</li>
+    <li>
+      <b>Network: </b>{{ kdrama.network }}</li>
+    <li>
+      <b>Episodes: </b>{{ kdrama.episodes }}</li>
+    <li>
+      <b>Release Date: </b>{{ kdrama.releaseDate | date }}</li>
+  </ul>
+
+  <h2><b>Synopsis by KOREABOO</b></h2>
+  <div class="ion-text-left">
+    <p>{{ kdrama.synopsis }}</p>
+  </div>
+
+  <h2><b>Cast</b></h2>
+  <ul>
+    <p *ngFor="let c of kdrama.cast">{{ c }}</p>
+  </ul>
+  <ion-list></ion-list>
+
+  <h4>Comments</h4>
+  <ion-textarea *ngIf="user" [(ngModel)]="message" type="text" placeholder="Leave a Comment... "></ion-textarea>
+  <ion-button *ngIf="user" color="light" float-right round (click)="sendComment()">Send</ion-button>
+  <br><br>
+  <div class="comment-box">
+    <ion-card *ngFor="let comment of comments">
+      <ion-card-content>
+        <strong>{{comment.message}}</strong>
+        <p>{{ comment.name }}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
