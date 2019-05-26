@@ -1,5 +1,7 @@
 {
-  "name": "Koreaboo-client",
-  "integrations": {},
+  "name": "koreaboo",
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

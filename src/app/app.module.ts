@@ -1,3 +1,4 @@
+import { AccPopoverComponent } from './acc-popover/acc-popover.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -8,15 +9,20 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { LoginPage } from './login/login.page';
-import { RegisterPage } from './register/register.page';
-import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
-  declarations: [AppComponent, LoginPage, RegisterPage],
-  entryComponents: [LoginPage, RegisterPage],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpModule, FormsModule],
+  declarations: [AppComponent, AccPopoverComponent],
+  entryComponents: [AccPopoverComponent],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+// tslint:disable-next-line: deprecation
+    HttpModule,
+    IonicStorageModule.forRoot()
+  ],
   providers: [
     StatusBar,
     SplashScreen,
@@ -24,4 +30,4 @@ import { HttpModule } from '@angular/http';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

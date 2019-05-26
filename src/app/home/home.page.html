@@ -1,39 +1,28 @@
 <ion-header>
-  <ion-toolbar>
-    <img src="assets/icon/favicon.png">
-    <ion-searchbar showCancelButton cancelButtonText="Custom Cancel"></ion-searchbar>
-    <ion-item>
-      <ion-button>Login</ion-button>
-      <ion-button>Sign Up</ion-button>
-    </ion-item>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      K-Drama
+    </ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-content color="dark">
 
-<ion-content padding center text-center>
-  <ion-list>
-    <ion-item>
-      <ion-button expand="block">K - POP</ion-button>
-      <ion-button expand="block">K - Drama</ion-button>
-      <ion-button expand="block">K - Movie</ion-button>
-      <ion-button expand="block">K - POP</ion-button>
-    </ion-item>
-  </ion-list>
-  <ion-list>
-      <ion-item>
-          <ion-slides pager="true" [options]="slideOpts">
-              <ion-slide>
-                <img src="assets\images\1.jpg">
-              </ion-slide>
-              <ion-slide>
-                  <img src="assets\images\2.jpg">
-              </ion-slide>
-              <ion-slide>
-                  <img src="assets\images\3.jpg">
-              </ion-slide>
-              <ion-slide>
-                  <img src="assets\images\4.jpg">
-              </ion-slide>
-            </ion-slides>
-      </ion-item>
-  </ion-list>
+  <ion-card color="light" *ngFor="let data of kdrama">
+    <div (click)="goKdrama(data.id)">
+      <ion-card-header>
+        <ion-card-subtitle>Korean Drama</ion-card-subtitle>
+        <ion-card-title>{{ data.title }}</ion-card-title>
+        <img src="https://koreaboo-server.herokuapp.com/images/{{ data.poster }}">
+      </ion-card-header>
+      <ion-card-content>
+        <div class="ion-text-left">
+          {{ data.synopsisShort }}
+        </div>
+      </ion-card-content>
+    </div>
+  </ion-card>
+
 </ion-content>
